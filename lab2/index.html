@@ -1,0 +1,61 @@
+<html>
+<head>
+  <style>
+  table {
+     font-family: Arial, Helvetica, sans-serif;
+     border-collapse: collapse;
+     width: 100%;
+    }
+    td, th {
+     border: 1px solid #ddd;
+     padding: 6px;
+    }
+    tr:nth-child(even){background-color: #F2F2F2;}
+    tr:hover {background-color: #ddd;}
+    th {
+     padding-top: 12px;
+     padding-bottom: 12px;
+     text-align: left;
+     background-color: #04AA6D;
+     color: white;
+    }
+</style>
+</head>
+<body>
+<h1>資工開課表</h1>
+<table id = "csie" class = "table table-striped   table-hover">
+  <tr>
+    <th>開課單位</th>
+    <th>開課名稱</th>
+    <th>開課教師</th>
+  </tr>
+</table>
+  <button onclick = "AddNewData()">AddNewData</button>
+  <button onclick = "delOldData()">delOldData</button>
+  <script>
+var a = ["資工系", "資工系", "資工系", "資工系", "資工系", "資工系"]
+var b = ["物件導向軟體設計計", "計算機網路實驗", "作戲系統實務", "生物統計", "通訊系統", "軟硬體專題(2)"]
+var c = ["黃崇源", "李春良", "張哲維", "陳光武", "陳仁暉", "魏志達"]
+function AddNewData() {
+  var myTable = document.getElementById("csie");
+  var rowCount = b.length;
+  var cellCount = myTable.rows[0].cells.length;
+  for (i = 0; i < rowCount; i++) {
+    var row = myTable.insertRow(-1);
+    row.insertCell(0).innerHTML = a[i];
+    row.insertCell(1).innerHTML = b[i];
+    row.insertCell(2).innerHTML = c[i];
+    console.log(a[i], b[i], c[i]);
+  }
+}
+function delOldData() {
+  var myTable = document.getElementById("csie");
+  var rowCount = document.getElementById("csie").rows.length;
+  var cellCount = myTable.rows[0].cells.length;
+  if(rowCount > 1){//Not Delete Row[0]
+    document.getElementById("csie").deleteRow(-1);//Delete the last row
+  }
+}
+</script>
+</body>
+</html>
